@@ -139,6 +139,7 @@ let studentAlice = {
     subjects: [],
     addSubject: function(subject){
         this.subjects.push(subject);
+
     },
     quitSubject: function (subject) {
         let subjectIndex = this.subjects.indexOf(subject);
@@ -173,6 +174,7 @@ let studentCharlie = {
     subjects: [],
     addSubject: function(subject){
         this.subjects.push(subject);
+        let studentSubject = this.subjects
     },
     quitSubject: function (subject) {
         let subjectIndex = this.subjects.indexOf(subject);
@@ -293,17 +295,89 @@ programmering.addStudent(studentDiana);
 
 
 //add teachers
-math.addTeacher(teacherAnna);
-history.addTeacher(teacherBjorn);
-programmering.addTeacher(teacherNiklas);
-console.log(programmering);
-
-studentDiana.quitSubject(programmering);
-console.log(programmering);
-
-
+// math.addTeacher(teacherAnna);
+// history.addTeacher(teacherBjorn);
+// programmering.addTeacher(teacherNiklas);
+// console.log(programmering);
 
 //remove teacher
 // math.removeteacher();
 // console.log(math);
 
+
+
+// exampel usage
+
+// studentDiana.addSubject(math);
+// math.addStudent(studentDiana);
+// console.log(studentDiana);
+// studentDiana.quitSubject(math);
+// console.log(math);
+// console.log(studentDiana);
+
+
+//exampel usage 
+// school.fireTechers(teacherAnna);
+
+
+
+ function displayAllStudents() {
+    console.log("List of all students in the school:");
+    for (let index in school.students) {
+        let student = school.students[index];
+        console.log(`Name: ${student.name}, Age: ${student.age}, Gender: ${student.gender}`);
+    }
+}
+
+// Anropa funktionen för att visa alla studenter
+displayAllStudents();
+
+
+// Funktion som visar alla ämnen för en specifik student
+function displayAllSubjectsOfStudent(student) {
+    let subjects = student.subjects.map(subject => subject.name);
+    console.log(`Subjects for ${student.name}: ${subjects.join(", ")}`);
+    return subjects;
+}
+
+// Funktion som visar alla studenter registrerade i ett visst ämne
+function displayAllStudentsEnlistedToSubject(subject) {
+    let students = subject.students.map(student => student.name);
+    console.log(`Students enrolled in ${subject.name}: ${students.join(", ")}`);
+    return students;
+}
+
+// Funktion som visar alla lärare på skolan
+function displayAllTeachers() {
+    let teacherNames = school.teachers.map(teacher => teacher.name);
+    console.log("All teachers in the school: " + teacherNames.join(", "));
+    return teacherNames;
+}
+
+//exampel usage
+displayAllSubjectsOfStudent(studentAlice); // "Subjects for students
+displayAllStudentsEnlistedToSubject(math);
+displayAllTeachers();
+
+
+let Grade = {
+    subject: null,
+    student: null,
+    grade: null,
+    
+    setGrade: function(grade) {
+        this.grade = grade;
+    },
+    
+    getGrade: function() {
+        return {
+            subject: this.subject.name,
+            student: this.student.name,
+            grade: this.grade,
+        };
+    },
+    
+    displayGrade: function() {
+        console.log(`Grade for ${this.student.name} in ${this.subject.name}: ${this.grade}`);
+    }
+};
