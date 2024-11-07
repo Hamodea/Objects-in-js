@@ -396,12 +396,12 @@ console.log(programmering);
 // studentDiana.quitSubject(programmering);
 // console.log(programmering);
 
-=======
+
 // math.addTeacher(teacherAnna);
 // history.addTeacher(teacherBjorn);
 // programmering.addTeacher(teacherNiklas);
 // console.log(programmering);
->>>>>>> 8df2e5a51debf147f6ad249510f2c9c42fd0edb7
+
 
 //remove teacher
 // math.removeteacher();
@@ -409,7 +409,7 @@ console.log(programmering);
 
 
 
-<<<<<<< HEAD
+
 // studentDiana.addSubject(math);
 // studentDiana.quitSubject(math);
 // console.log(studentDiana);
@@ -477,20 +477,8 @@ let Grade = {
 teacherAnna.setGrade(studentAlice, math, "A");
 console.log(studentAlice.getGrades().map(grade => grade.getGradeInfo()));
 
-=======
-// exampel usage
-
-// studentDiana.addSubject(math);
-// math.addStudent(studentDiana);
-// console.log(studentDiana);
-// studentDiana.quitSubject(math);
-// console.log(math);
-// console.log(studentDiana);
-
-
-//exampel usage 
-// school.fireTechers(teacherAnna);
 
 
 
->>>>>>> 8df2e5a51debf147f6ad249510f2c9c42fd0edb7
+
+
