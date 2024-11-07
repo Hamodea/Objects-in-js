@@ -40,6 +40,7 @@ let math = {
     name: "Math",
     students: [],
     teacher: null,
+    grades: [],
     addStudent : function (student){
         this.students.push(student);
     },
@@ -64,6 +65,12 @@ let math = {
         if (studentIndex > -1) {
             this.students.splice(studentIndex, 1); // Ta bort studenten från ämnets lista
         }
+    },
+    addGrade: function(grade) {
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
@@ -71,6 +78,7 @@ let programmering = {
     name: "programmering",
     students: [],
     teacher: null, // använda null för att lägga ett värde senare
+    grades: [],
     addStudent : function (student){
         this.students.push(student);
     },
@@ -95,6 +103,12 @@ let programmering = {
         if (studentIndex > -1) {
             this.students.splice(studentIndex, 1); // Ta bort studenten från ämnets lista
         }
+    },
+    addGrade: function(grade) {
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
@@ -102,6 +116,7 @@ let history = {
     name: "History",
     students: [],
     teacher: null,
+    grades: [],
     addTeacher: function(teacher) {
         this.teacher = teacher;  // Lägg till läraren i ämnet
         teacher.addSubjects(this);  // Lägg till ämnet till lärarens ämneslista
@@ -125,8 +140,17 @@ let history = {
         if (studentIndex > -1) {
             this.students.splice(studentIndex, 1); // Ta bort studenten från ämnets lista
         }
+    },
+    addGrade: function(grade) {
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
+
+    
+
 
 
 
@@ -137,6 +161,7 @@ let studentAlice = {
     age: 20,
     gender: "Female",
     subjects: [],
+    grades: [], 
     addSubject: function(subject){
         this.subjects.push(subject);
     },
@@ -146,6 +171,12 @@ let studentAlice = {
             this.subjects.splice(subjectIndex, 1); // Ta bort ämnet från studentens lista
             subject.removeStudent(this); // Ta bort studenten från ämnets lista
         }
+    },
+    addGrade: function(grade) {
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
@@ -154,6 +185,7 @@ let studentBob = {
     age: 22,
     gender: "Male",
     subjects: [],
+    grades: [],
     addSubject: function(subject){
         this.subjects.push(subject);
     },
@@ -163,6 +195,12 @@ let studentBob = {
             this.subjects.splice(subjectIndex, 1); // Ta bort ämnet från studentens lista
             subject.removeStudent(this); // Ta bort studenten från ämnets lista
         }
+    },
+    addGrade: function(grade) {
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
@@ -171,6 +209,7 @@ let studentCharlie = {
     age: 19,
     gender: "Male",
     subjects: [],
+    grades: [],
     addSubject: function(subject){
         this.subjects.push(subject);
     },
@@ -180,6 +219,14 @@ let studentCharlie = {
             this.subjects.splice(subjectIndex, 1); // Ta bort ämnet från studentens lista
             subject.removeStudent(this); // Ta bort studenten från ämnets lista
         }
+    },
+    setGrade: function(student, subject, score) {
+        let grade = Object.create(Grade);
+        grade.setGrade(student, subject, this, score);
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
@@ -188,6 +235,7 @@ let studentDiana = {
     age: 21,
     gender: "Female",
     subjects: [],
+    grades: [],
     addSubject: function(subject){
         this.subjects.push(subject);
     },
@@ -197,6 +245,14 @@ let studentDiana = {
             this.subjects.splice(subjectIndex, 1); // Ta bort ämnet från studentens lista
             subject.removeStudent(this); // Ta bort studenten från ämnets lista
         }
+    },
+    setGrade: function(student, subject, score) {
+        let grade = Object.create(Grade);
+        grade.setGrade(student, subject, this, score);
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
@@ -205,6 +261,7 @@ let studentEdward = {
     age: 23,
     gender: "Male",
     subjects: [],
+    grades: [],
     addSubject: function(subject){
         this.subjects.push(subject);
     },
@@ -214,6 +271,14 @@ let studentEdward = {
             this.subjects.splice(subjectIndex, 1); // Ta bort ämnet från studentens lista
             subject.removeStudent(this); // Ta bort studenten från ämnets lista
         }
+    },
+    setGrade: function(student, subject, score) {
+        let grade = Object.create(Grade);
+        grade.setGrade(student, subject, this, score);
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
@@ -227,16 +292,34 @@ studentEdward.addSubject(history);
 let teacherAnna = {
     name: "Anna",
     subjects: [],
+    grades: [],
     addSubjects: function(subject){
         this.subjects.push(subject);
+    },
+    setGrade: function(student, subject, score) {
+        let grade = Object.create(Grade);
+        grade.setGrade(student, subject, this, score);
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
 let teacherBjorn = {
     name: "Bjorn",
     subjects: [],
+    grades: [],
     addSubjects: function(subject){
         this.subjects.push(subject);
+    },
+    setGrade: function(student, subject, score) {
+        let grade = Object.create(Grade);
+        grade.setGrade(student, subject, this, score);
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
@@ -244,8 +327,17 @@ let teacherBjorn = {
 let teacherNiklas = {
     name: "Niklas",
     subjects: [],
+    grades: [],
     addSubjects: function(subject){
         this.subjects.push(subject);
+    },
+    setGrade: function(student, subject, score) {
+        let grade = Object.create(Grade);
+        grade.setGrade(student, subject, this, score);
+        this.grades.push(grade);
+    },
+    getGrades: function() {
+        return this.grades;
     }
 };
 
@@ -298,12 +390,80 @@ history.addTeacher(teacherBjorn);
 programmering.addTeacher(teacherNiklas);
 console.log(programmering);
 
-studentDiana.quitSubject(programmering);
-console.log(programmering);
-
+// studentDiana.quitSubject(programmering);
+// console.log(programmering);
 
 
 //remove teacher
 // math.removeteacher();
 // console.log(math);
+
+
+
+// studentDiana.addSubject(math);
+// studentDiana.quitSubject(math);
+// console.log(studentDiana);
+
+
+// funktionen för att visa alla studenter
+function displayAllStudents() {
+    console.log("List of all students in the school:");
+    for (let index in school.students) {
+        let student = school.students[index];
+        console.log(`Name: ${student.name}, Age: ${student.age}, Gender: ${student.gender}`);
+    }
+}
+displayAllStudents();
+
+// Funktion som visar alla studenter registrerade i ett visst ämne
+function displayAllStudentsEnlistedToSubject(subject) {
+    let students = subject.students.map(student => student.name);
+    console.log(`Students enrolled in ${subject.name}: ${students.join(", ")}`);
+    return students;
+}
+
+//displayAllStudentsEnlistedToSubject(math);
+
+
+
+// Funktion som visar alla lärare på skolan
+function displayAllTeachers() {
+    let teacherNames = school.teachers.map(teacher => teacher.name);
+    console.log("All teachers in the school: " + teacherNames.join(", "));
+    return teacherNames;
+}
+displayAllTeachers();
+
+
+// Betygsobjekt
+let Grade = {
+    student: null,
+    subject: null,
+    teacher: null,
+    score: null,
+    
+    setGrade: function(student, subject, teacher, score) {
+        this.student = student;
+        this.subject = subject;
+        this.teacher = teacher;
+        this.score = score;
+       
+        
+        // Lägg till betyget i studentens och ämnets betygslista
+        student.addGrade(this);
+        subject.addGrade(this);
+    },
+    
+    updateGrade: function(newScore) {
+        this.score = newScore;
+    },
+    
+    getGradeInfo: function() {
+        return `Student: ${this.student.name}, Subject: ${this.subject.name}, Teacher: ${this.teacher.name}, Score: ${this.score}`;
+    }
+};
+
+//exampel usage
+teacherAnna.setGrade(studentAlice, math, "A");
+console.log(studentAlice.getGrades().map(grade => grade.getGradeInfo()));
 
